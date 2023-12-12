@@ -1,0 +1,25 @@
+{
+    "name": "nodejs-basics-byte",
+    "version": "1.0.0",
+    "description": "Setup for Crio NodeJS Basics Byte",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon app.js",
+        "manas": "node app.js",
+        "expressApp": "nodemon expresApp.js"
+    },
+    "author": "Aman Kumar",
+    "license": "ISC",
+    "dependencies": {
+        "@babel/core": "^7.17.10",
+        "@testing-library/dom": "^8.13.0",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "joi": "^17.11.0",
+        "typescript": "^3.2.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.2"
+    }
+}
