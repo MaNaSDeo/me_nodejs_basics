@@ -8,6 +8,6 @@ const schema = Joi.object().keys({
 const getQueryErrors = (data) => {
     const result = schema.validate(data);
     return result.error;
-  }
+}
 
-  module.exports = {getQueryErrors}
+module.exports = {getQueryErrors}
