@@ -79,7 +79,13 @@
 // module.exports = {getUsersByNameAndAge, getUsersByUUID, getUsers}
 
 const usersData = require('../users.json');
+
 const { getQueryErrors } = require('../validators/users.validators');
+
+// const PASSWORD = 'LetMeIn'
+
+// const PASSWORD = process.env.ROUTE_PASSWORD;
+// console.log(PASSWORD);
 
 // const schema = joi.object().keys({
 //     age: joi.number().integer().min(0).max(100),
@@ -89,6 +95,15 @@ const { getQueryErrors } = require('../validators/users.validators');
 const getUsers = (request, response) => {
     response.json(usersData.data)
 }
+
+// const verifyAuth = (request, response) => {
+//     const authorization = request.headers["authorization"];
+//     console.log(authorization)
+
+//     if(authorization !== PASSWORD){
+//         return response.status(403).json({message: "Not authorized!"})
+//     }
+// }
 
 const getUsersByUUID = (request, response) => {
     const {uuid} = request.params;
@@ -101,6 +116,8 @@ const getUsersByUUID = (request, response) => {
 }
 
 const getUsersByNameAndAge = (request, response) => {
+    // verifyAuth(request, response);
+
     const {gender, age} = request.query;
 
     // const result = schema.validate({
@@ -112,14 +129,14 @@ const getUsersByNameAndAge = (request, response) => {
     //     return response.status(422).json(result.error)
     // }
     
-    const error = getQueryErrors({
-        age, 
-        gender
-    })
+    // const error = getQueryErrors({
+    //     age, 
+    //     gender
+    // })
 
-    if(error){
-        return response.status(422).json(error)
-    }
+    // if(error){
+    //     return response.status(422).json(error)
+    // }
 
     if(gender && age){
         const result = usersData.data.filter(item => {

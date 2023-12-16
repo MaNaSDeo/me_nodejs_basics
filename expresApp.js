@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 
 const app = express();
@@ -25,8 +27,10 @@ const currenciesRoutes = require("./routes/currencies.routes")
 
 // const {getUsersByNameAndAge, getUsersByUUID, getUsers} = require("./controller/users.controller")
 
-const userRoutes = require('./routes/users.routes')
+const userRoutes = require('./routes/users.routes');
+const verifyAuth = require('./middlewares/verifyAuth');
 
+app.use(verifyAuth);
 
 app.get("/", (request, response) => {
     console.log("current Route: /")
@@ -57,6 +61,7 @@ app.get("/status", (request, response) => {
 
 // app.get("/currencies/:id", getCurrenciesById)
 
+// app.use("/currencies", verifyAuth, currenciesRoutes) //To have verification individually. ****
 app.use("/currencies", currenciesRoutes)
 
 // app.get("/users", getUsers)
